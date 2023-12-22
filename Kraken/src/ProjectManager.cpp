@@ -5,6 +5,7 @@
 #include <imgui/ImGuiFileDialog.h>
 #include <filesystem>
 #include <iostream>
+
 namespace fs = std::filesystem;
 
 std::string ProjectName = "NewProject";
@@ -12,7 +13,8 @@ std::string ProjectPath = "Documents/KrakenProjects/";
 
 Kraken::Panels currentPanel = Kraken::Panels::About;
 
-void ChoosePath()
+
+static void ChoosePath()
 {
     if (ImGuiFileDialog::Instance()->Display("ChooseFolderForProject"))
     {
@@ -23,7 +25,11 @@ void ChoosePath()
         ImGuiFileDialog::Instance()->Close();
     }
 }
-
+static void CreateProject()
+{
+    fs::create_directory(ProjectPath + "/" + ProjectName);
+    ProjectName = "New Project";
+}
 void Kraken::ProjectManager::AboutPanel()
 {
     ImGui::Text("About");
@@ -55,11 +61,9 @@ void Kraken::ProjectManager::NewProjectPanel()
     {
         ImGuiFileDialog::Instance()->OpenDialog("ChooseFolderForProject", "Choose Folder", nullptr, ".");
     }
-    ImGui::Dummy(ImVec2(50, 20));
     if (ImGui::Button("Create") && ProjectName.length() != 0 && ProjectPath.length() != 0)
     {
-        fs::create_directory(ProjectPath + "/" + ProjectName);
-        ProjectName = "New Project";
+        CreateProject();
     }
 }
 
@@ -74,9 +78,12 @@ void Kraken::ProjectManager::run(GLFWwindow* window)
     glfwSetWindowTitle(window, "Kraken Project manager");
 
     ImGui::DockSpaceOverViewport();
+    ImGui::SetNextWindowPos(ImVec2(1920 * 0.0f, 0));
+    ImGui::SetNextWindowSize(ImVec2(1920 * 0.15f, 1080 * 0.936f));
 
-    ImGui::Begin("ProjectManager");
-
+    ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0, 55));
+    ImGui::Begin("",NULL,ImGuiWindowFlags_NoCollapse|ImGuiWindowFlags_NoMove|ImGuiWindowFlags_NoResize|ImGuiWindowFlags_NoTitleBar|ImGuiWindowFlags_DockNodeHost);
+    
     ChoosePath();
 
     if (ImGui::Selectable("New Project"))
@@ -91,31 +98,23 @@ void Kraken::ProjectManager::run(GLFWwindow* window)
     {
         currentPanel = Learn;
     }
+
     if (ImGui::Selectable("About"))
     {
         currentPanel = About;
     }
 
-    ImGui::End();
+    ImGui::BulletText("engine version -");
+    ImGui::BulletText("0.0.0.0.1");
 
-    ImGui::Begin("Projects");
+    //ImGui::ImageButton() // change to settngs buton //I don't know how lol
 
-    switch (currentPanel)
-    {
-    case Kraken::About:
-        AboutPanel();
-        break;
-    case Kraken::Open:
-        OpenProjectsPanel();
-        break;
+    ImGui::PopStyleVar();
 
-    case Panels::New:
-        NewProjectPanel();
-        break;
-    case Panels::Learn:
-        LearnEnginePanel();
-        break;
-    }
 
+    ImGui::DockSpaceOverViewport();
+    ImGui::SetNextWindowPos(ImVec2(1920 * 0.15f, 0));
+    ImGui::SetNextWindowSize(ImVec2(1920 * 0.86f, 1080 * 0.936f));
+    ImGui::Begin("Project list", NULL, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize );
     ImGui::End();
 }

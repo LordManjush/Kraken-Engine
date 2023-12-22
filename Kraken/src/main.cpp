@@ -1,10 +1,12 @@
 #include <ProjectManager.h>
 #include <Kraken.h>
+#include <Editor.h>
 
 int main() 
 {
 	Kraken::Kraken kraken;
 	Kraken::ProjectManager projectManager;
+	Kraken::KrakenEditor editor;
 
 	kraken.init();
 	GLFWwindow* window = glfwCreateWindow(800, 800, "Kraken", NULL, NULL);
@@ -17,11 +19,13 @@ int main()
 		//ImGui::PushFont(fancyFont);
 		kraken.clear();
 
-		projectManager.run(window);
+		//projectManager.run(window);
+		editor.run();
 
 		kraken.windowEventHandle(*window);
 
 	}
 
 	kraken.Delete(*window);
+	return 0;
 }

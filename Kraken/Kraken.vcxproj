@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\Editor.h" />
     <ClInclude Include="include\Kraken.h" />
     <ClInclude Include="include\limo.h" />
     <ClInclude Include="include\ProjectManager.h" />
@@ -179,6 +180,7 @@
     <ClCompile Include="Libraries\imgui\imgui_stdlib.cpp" />
     <ClCompile Include="Libraries\imgui\imgui_tables.cpp" />
     <ClCompile Include="Libraries\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="src\Editor.cpp" />
     <ClCompile Include="src\Kraken.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ProjectManager.cpp" />
