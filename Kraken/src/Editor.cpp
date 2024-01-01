@@ -8,14 +8,25 @@
 #include <imgui\imgui_impl_opengl3.h>
 #define STB_IMAGE_IMPLEMENTATION
 #include <imgui\stb_image.h>
+#include <imgui\IconsFontAwesome5.h>
+
+
+auto defwidth = 1920;
+auto defheight = 1080;
 
 void init()
 
 {
-    ImGuiIO& io = ImGui::GetIO();
-
+    ImGuiIO& io = ImGui::GetIO(); (void)io;
     auto font = io.Fonts->AddFontFromFileTTF(
-        "C:\Windows\Fonts\"RabbidHighwaySignII.ttf", 1.5f);
+        "C:\Windows\Fonts\"RabbidHighwaySignII.ttf", 20.0f);
+    ImFontConfig config;
+    config.MergeMode = false;
+    config.GlyphMinAdvanceX = 13.0f; // Use if you want to make the icon monospaced
+    static const ImWchar icon_ranges[] = { ICON_MIN_FA, ICON_MAX_FA, 0 };
+    io.Fonts->AddFontFromFileTTF("../../Lomus/Resources/Font/forkawesome-webfont.ttf", 50.0f, &config, icon_ranges);
+    
+    
 }
 void Kraken::KrakenEditor::OverviewPanel()
 {
@@ -57,13 +68,13 @@ void Kraken::KrakenEditor::OpenpanelBar()// this will open the asset manager and
 {
 
 
-    ImGui::SetNextWindowPos(ImVec2(1920 * 0.0f,1080 * 0.87f));
-    ImGui::SetNextWindowSize(ImVec2(1920 * 0.15f, 1080 * 0.08f));
+    ImGui::SetNextWindowPos(ImVec2(defwidth * 0.0f,defheight * 0.87f));
+    ImGui::SetNextWindowSize(ImVec2(defwidth * 0.01f, defheight * 0.08f));
 
    
 
  
-    ImGui::SetWindowFontScale(50.0f);
+   
     ImGui::Begin("", NULL,  ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove);
         
     ImGui::Text("jake");

@@ -156,6 +156,7 @@
     <ClInclude Include="include\limo.h" />
     <ClInclude Include="include\ProjectManager.h" />
     <ClInclude Include="Libraries\imgui\dirent.h" />
+    <ClInclude Include="Libraries\imgui\IconsFontAwesome5.h" />
     <ClInclude Include="Libraries\imgui\imconfig.h" />
     <ClInclude Include="Libraries\imgui\imgui.h" />
     <ClInclude Include="Libraries\imgui\ImGuiFileDialog.h" />
@@ -168,6 +169,7 @@
     <ClInclude Include="Libraries\imgui\imstb_rectpack.h" />
     <ClInclude Include="Libraries\imgui\imstb_textedit.h" />
     <ClInclude Include="Libraries\imgui\imstb_truetype.h" />
+    <ClInclude Include="Libraries\imgui\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="glad.c" />
