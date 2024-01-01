@@ -8,7 +8,7 @@
 #include <imgui\imgui_impl_opengl3.h>
 #define STB_IMAGE_IMPLEMENTATION
 #include <imgui\stb_image.h>
-#include <imgui\IconsFontAwesome5.h>
+#include <imgui\IconsFontAwesome6.h>
 #include <include/GLFW/glfw3.h>
 #include <include\GLFW\glfw3native.h>
 
@@ -75,7 +75,8 @@ void Kraken::KrakenEditor::OpenpanelBar()// this will open the asset manager and
    
     ImGui::Begin("", NULL,  ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove);
         
-    ImGui::Button(ICON_FA_SEARCH);
+    ImGui::Button(ICON_FA_BELL);
+
     
     ImGui::End();
    

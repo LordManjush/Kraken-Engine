@@ -6,7 +6,7 @@
 #include <imgui/imgui_impl_opengl3.h>
 #include<iostream>
 #include<glad/glad.h>
-#include <imgui\IconsFontAwesome5.h>
+#include <imgui\IconsFontAwesome6.h>
 
 void CustomStyle()
 {
@@ -150,6 +150,7 @@ void Kraken::Kraken::InitalizeImGui(GLFWwindow& window)
 
 
 	io.Fonts->AddFontFromFileTTF("C:\.Windows\Fonts\forkawesome-webfont.ttf", 50.0f, &config, icon_ranges);
+	io.Fonts->Build();
 
 
 	//ImGui::StyleColorsDark();//Style
