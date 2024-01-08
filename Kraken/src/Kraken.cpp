@@ -7,7 +7,11 @@
 #include<iostream>
 #include<glad/glad.h>
 #include <imgui\IconsFontAwesome6.h>
+#include <string>
+#include <filesystem>
 
+using std::string;
+using std::filesystem::current_path;
 void CustomStyle()
 {
 	ImGuiStyle& style = ImGui::GetStyle();
@@ -126,6 +130,8 @@ void Kraken::Kraken::CheckError(GLFWwindow& window)
 	glfwSwapBuffers(&window);
 }
 
+
+
 void Kraken::Kraken::InitalizeImGui(GLFWwindow& window)
 {
 	IMGUI_CHECKVERSION();
@@ -137,19 +143,21 @@ void Kraken::Kraken::InitalizeImGui(GLFWwindow& window)
 	ImGui_ImplOpenGL3_Init("#version 120");
 
 	
-	io.Fonts->Clear();
-	auto font = io.Fonts->AddFontFromFileTTF(
-		"C:\Windows\Fonts\"Kanit-SemiBold.ttf", 1.5f );
+	string fontPath = (current_path()).string() + "/Fonts/Kanit-SemiBold.ttf";
+	string output = std::filesystem::exists(fontPath) ? "Font path " + fontPath + " is valid!" : "Font path " + fontPath + "is not valid!";
+	std::cout << output << std::endl;
+	auto font = io.Fonts->AddFontFromFileTTF(fontPath.c_str(), 16.0f);
 	ImFontConfig config;
 	config.MergeMode = true;
 	config.GlyphMinAdvanceX = 13.0f; // Use if you want to make the icon monospaced
+	
 
 	static const ImWchar icon_ranges[] = { ICON_MIN_FA, ICON_MAX_FA, 0 };
 
 
 
 
-	io.Fonts->AddFontFromFileTTF("C:\.Windows\Fonts\forkawesome-webfont.ttf", 50.0f, &config, icon_ranges);
+	io.Fonts->AddFontFromFileTTF(".\Data\Fonts\Forkawesome-webfont.ttf", 1.5f, &config, icon_ranges);
 	io.Fonts->Build();
 
 

@@ -188,6 +188,10 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ProjectManager.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="Data\Fonts\Forkawesome-webfont.ttf" />
+    <Font Include="Data\Fonts\Kanit-SemiBold.ttf" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

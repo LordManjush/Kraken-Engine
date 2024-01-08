@@ -120,4 +120,8 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="Data\Fonts\Kanit-SemiBold.ttf" />
+    <Font Include="Data\Fonts\Forkawesome-webfont.ttf" />
+  </ItemGroup>
 </Project>

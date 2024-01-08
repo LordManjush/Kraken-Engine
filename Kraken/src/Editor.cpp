@@ -13,6 +13,7 @@
 #include <include\GLFW\glfw3native.h>
 
 
+
 auto defwidth = 1920;
 auto defheight = 1080;
 
@@ -67,7 +68,7 @@ void Kraken::KrakenEditor::OpenpanelBar()// this will open the asset manager and
 
 
     ImGui::SetNextWindowPos(ImVec2(defwidth * 0.0f,defheight * 0.9f));
-    ImGui::SetNextWindowSize(ImVec2(defwidth * 0.905f, defheight * 0.04f));
+    ImGui::SetNextWindowSize(ImVec2(defwidth * 1.0f, defheight * 0.04f));
 
    
 
@@ -103,6 +104,11 @@ void Kraken::KrakenEditor::TitleBar()
 
 
             if (ImGui::MenuItem("Open Recent"))
+            {
+                //Do something
+            }
+
+            if (ImGui::MenuItem("Peferences"))
             {
                 //Do something
             }
