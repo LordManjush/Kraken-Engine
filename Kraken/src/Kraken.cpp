@@ -143,10 +143,11 @@ void Kraken::Kraken::InitalizeImGui(GLFWwindow& window)
 	ImGui_ImplOpenGL3_Init("#version 120");
 
 	
-	string fontPath = (current_path()).string() + "/Fonts/Kanit-SemiBold.ttf";
+	string fontPath = (current_path()).generic_string() + "/Fonts/Kanit-SemiBold.ttf";
+	
+	auto font = io.Fonts->AddFontFromFileTTF((fontPath).c_str(), 16.0f);
 	string output = std::filesystem::exists(fontPath) ? "Font path " + fontPath + " is valid!" : "Font path " + fontPath + "is not valid!";
 	std::cout << output << std::endl;
-	auto font = io.Fonts->AddFontFromFileTTF(fontPath.c_str(), 16.0f);
 	ImFontConfig config;
 	config.MergeMode = true;
 	config.GlyphMinAdvanceX = 13.0f; // Use if you want to make the icon monospaced
