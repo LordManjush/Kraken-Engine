@@ -124,4 +124,7 @@
     <Font Include="Data\Fonts\Kanit-SemiBold.ttf" />
     <Font Include="Data\Fonts\Forkawesome-webfont.ttf" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="imgui.ini" />
+  </ItemGroup>
 </Project>

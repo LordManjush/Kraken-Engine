@@ -17,18 +17,11 @@
 auto defwidth = 1920;
 auto defheight = 1080;
 
-void init()
 
-{
- ;
 
-    ImGuiIO& io = ImGui::GetIO(); (void)io;
-    
-    
-    
-}
 void Kraken::KrakenEditor::OverviewPanel()
 {
+
     ImGui::Begin("Overview", NULL, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize);
     ImGui::Dummy(ImVec2(0, 920));
     ImGui::BeginTabBar("hh");
@@ -148,7 +141,7 @@ void Kraken::KrakenEditor::TitleBar()
 
 void Kraken::KrakenEditor::run()
 {
-    init();
+    
     ImGui::DockSpaceOverViewport();
     AssetManager();
     OpenpanelBar();

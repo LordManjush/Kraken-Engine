@@ -1,3 +1,4 @@
+#include <filesystem>
 #include "Kraken.h"
 #include <limo.h>
 #include <stdio.h>
@@ -8,10 +9,12 @@
 #include<glad/glad.h>
 #include <imgui\IconsFontAwesome6.h>
 #include <string>
-#include <filesystem>
 
+using std::filesystem::exists;
+using namespace std;
 using std::string;
 using std::filesystem::current_path;
+
 void CustomStyle()
 {
 	ImGuiStyle& style = ImGui::GetStyle();
@@ -143,10 +146,19 @@ void Kraken::Kraken::InitalizeImGui(GLFWwindow& window)
 	ImGui_ImplOpenGL3_Init("#version 120");
 
 	
-	string fontPath = (current_path()).generic_string() + "/Fonts/Kanit-SemiBold.ttf";
-	
-	auto font = io.Fonts->AddFontFromFileTTF((fontPath).c_str(), 16.0f);
-	string output = std::filesystem::exists(fontPath) ? "Font path " + fontPath + " is valid!" : "Font path " + fontPath + "is not valid!";
+	//first i assign the path
+	string fontsPath = (current_path()).string() + "..\\Fonts\\Kanit-SemiBold.ttf";
+	//then i assign the output to check if the file actually exists
+	string output = exists(fontsPath) ? "Font path " + fontsPath + " exists!" : "Font path " + fontsPath + " does not exist!";
+	//then i print the output
+	cout << output << "\n\n";
+	//then if the file does exist i clear the fonts and actually assign fontsPath and font size
+	if (exists(fontsPath))
+	{
+		io.Fonts->Clear();
+		io.Fonts->AddFontFromFileTTF((fontsPath).c_str(), 16.0f);
+		io.Fonts->Build();
+	}
 	std::cout << output << std::endl;
 	ImFontConfig config;
 	config.MergeMode = true;
