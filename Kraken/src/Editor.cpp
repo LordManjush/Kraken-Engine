@@ -66,11 +66,14 @@ void Kraken::KrakenEditor::ViewTitlePanel()
     if (ShowViewPanel) {
        
 
-        ImGui::SetNextWindowPos(ImVec2(defwidth * 0.0f, defheight * 0.1f));
+        ImGui::SetNextWindowPos(ImVec2(defwidth * 0.0f, defheight * 0.02f));
         ImGui::SetNextWindowSize(ImVec2(defwidth * 1.0f, defheight * 0.09f));
-        ImGui::Begin("");
+        ImGui::Begin("jake",NULL, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoTitleBar| ImGuiWindowFlags_NoBringToFrontOnFocus);
+
+
+         ImGui::End();
     }
-    ImGui::End();
+   
 
 }
 
@@ -87,7 +90,7 @@ void Kraken::KrakenEditor::OpenpanelBar()// this will open the asset manager and
 
  
    
-    ImGui::Begin("", NULL,  ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove|ImGuiWindowFlags_NoTitleBar);
+    ImGui::Begin("jake", NULL,  ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove|ImGuiWindowFlags_NoTitleBar);
     ImGui::Dummy(ImVec2(0.0f, 5.0f));
     if (ImGui::Button(ICON_FA_FOLDER))
     {
@@ -182,7 +185,7 @@ void Kraken::KrakenEditor::TitleBar()
 void Kraken::KrakenEditor::run()
 {
     ImGui::DockSpaceOverViewport();
-    
+    ImGui::SetNextItemAllowOverlap();
     ViewTitlePanel();
     AssetManager();
     OverviewPanel();
