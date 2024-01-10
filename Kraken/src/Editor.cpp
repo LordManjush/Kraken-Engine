@@ -11,30 +11,34 @@
 #include <imgui\IconsFontAwesome6.h>
 #include <include/GLFW/glfw3.h>
 #include <include\GLFW\glfw3native.h>
+#include <imgui/tweeny-3.2.0.h>
 
-
+using namespace std;
 
 auto defwidth = 1920;
 auto defheight = 1080;
 
+bool ShowassetmanagerWindow = false;
+bool ShowViewPanel = false;
 
 
 void Kraken::KrakenEditor::OverviewPanel()
 {
 
     ImGui::Begin("Overview", NULL, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize);
-    ImGui::Dummy(ImVec2(0, 920));
+   
     ImGui::BeginTabBar("hh");
 
     if (ImGui::BeginTabItem("Scene"))
     {
+        ImGui::Text("Jake");
         
         ImGui::EndTabItem();
     }
 
     if (ImGui::BeginTabItem("Properties"))
     {
-        
+        ImGui::Text("god is great");
         ImGui::EndTabItem();
     }
 
@@ -48,12 +52,28 @@ void Kraken::KrakenEditor::AssetManager()
 {
 
 
+    if (ShowassetmanagerWindow) {
+        ImGui::Begin("AssetManager");
 
+        ImGui::End();
+    }
     
-    ImGui::Begin("AssetManager");
+   
+}
+void Kraken::KrakenEditor::ViewTitlePanel()
+{
+ 
+    if (ShowViewPanel) {
+       
 
+        ImGui::SetNextWindowPos(ImVec2(defwidth * 0.0f, defheight * 0.1f));
+        ImGui::SetNextWindowSize(ImVec2(defwidth * 1.0f, defheight * 0.09f));
+        ImGui::Begin("");
+    }
     ImGui::End();
-} 
+
+}
+
 
 
 void Kraken::KrakenEditor::OpenpanelBar()// this will open the asset manager and also hide it (just like ue5 content drawer)
@@ -67,9 +87,12 @@ void Kraken::KrakenEditor::OpenpanelBar()// this will open the asset manager and
 
  
    
-    ImGui::Begin("", NULL,  ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove);
-        
-    ImGui::Button(ICON_FA_BELL);
+    ImGui::Begin("", NULL,  ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove|ImGuiWindowFlags_NoTitleBar);
+    ImGui::Dummy(ImVec2(0.0f, 5.0f));
+    if (ImGui::Button(ICON_FA_FOLDER))
+    {
+        ShowassetmanagerWindow = !ShowassetmanagerWindow; // Toggle the value
+    }
 
     
     ImGui::End();
@@ -89,6 +112,15 @@ void Kraken::KrakenEditor::TitleBar()
                 //Do something
             }
 
+            if (ImGui::MenuItem("Save"))
+            {
+                //Do something
+            }
+
+            if (ImGui::MenuItem("Save As"))
+            {
+                //Do something
+            }
 
             if (ImGui::MenuItem("Open"))
             {
@@ -97,6 +129,11 @@ void Kraken::KrakenEditor::TitleBar()
 
 
             if (ImGui::MenuItem("Open Recent"))
+            {
+                //Do something
+            }
+
+            if (ImGui::MenuItem("New"))
             {
                 //Do something
             }
@@ -113,9 +150,12 @@ void Kraken::KrakenEditor::TitleBar()
 
         }
         ImGui::Dummy(ImVec2(40.0f, 0.0f));
-        if (ImGui::BeginMenu("View"))
-        {
-
+        if (ImGui::BeginMenu("View")) {
+            if (ImGui::MenuItem("Toggle View Window")) { // change to you liking
+                ShowViewPanel = !ShowViewPanel;
+                
+            }
+            ImGui::EndMenu();
         }
 
         ImGui::Dummy(ImVec2(40.0f, 0.0f));
@@ -141,12 +181,15 @@ void Kraken::KrakenEditor::TitleBar()
 
 void Kraken::KrakenEditor::run()
 {
-    
     ImGui::DockSpaceOverViewport();
+    
+    ViewTitlePanel();
     AssetManager();
-    OpenpanelBar();
     OverviewPanel();
+    OpenpanelBar();
     TitleBar();
+    
+    
     
     
     //Add the functions here

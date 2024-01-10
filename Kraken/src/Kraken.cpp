@@ -146,20 +146,8 @@ void Kraken::Kraken::InitalizeImGui(GLFWwindow& window)
 	ImGui_ImplOpenGL3_Init("#version 120");
 
 	
-	//first i assign the path
-	string fontsPath = (current_path()).string() + "..\\Fonts\\Kanit-SemiBold.ttf";
-	//then i assign the output to check if the file actually exists
-	string output = exists(fontsPath) ? "Font path " + fontsPath + " exists!" : "Font path " + fontsPath + " does not exist!";
-	//then i print the output
-	cout << output << "\n\n";
-	//then if the file does exist i clear the fonts and actually assign fontsPath and font size
-	if (exists(fontsPath))
-	{
-		io.Fonts->Clear();
-		io.Fonts->AddFontFromFileTTF((fontsPath).c_str(), 16.0f);
-		io.Fonts->Build();
-	}
-	std::cout << output << std::endl;
+	io.Fonts->Clear();
+	auto font = io.Fonts->AddFontFromFileTTF(".\\Data\\Fonts\\Kanit-SemiBold.ttf", 16.0f);
 	ImFontConfig config;
 	config.MergeMode = true;
 	config.GlyphMinAdvanceX = 13.0f; // Use if you want to make the icon monospaced
@@ -170,7 +158,7 @@ void Kraken::Kraken::InitalizeImGui(GLFWwindow& window)
 
 
 
-	io.Fonts->AddFontFromFileTTF(".\Data\Fonts\Forkawesome-webfont.ttf", 1.5f, &config, icon_ranges);
+	io.Fonts->AddFontFromFileTTF(".\\Data\\Fonts\\Forkawesome-webfont.ttf", 16.0f, &config, icon_ranges);
 	io.Fonts->Build();
 
 
