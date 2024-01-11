@@ -64,11 +64,11 @@ void Kraken::KrakenEditor::ViewTitlePanel()
 {
  
     if (ShowViewPanel) {
-       
-
         ImGui::SetNextWindowPos(ImVec2(defwidth * 0.0f, defheight * 0.02f));
-        ImGui::SetNextWindowSize(ImVec2(defwidth * 1.0f, defheight * 0.09f));
-        ImGui::Begin("jake",NULL, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoTitleBar| ImGuiWindowFlags_NoBringToFrontOnFocus);
+        ImGui::SetNextWindowSize(ImVec2(defwidth * 0.904f, defheight * 0.06f));
+
+       
+        ImGui::Begin("jae", NULL, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove);
 
 
          ImGui::End();
@@ -185,8 +185,8 @@ void Kraken::KrakenEditor::TitleBar()
 void Kraken::KrakenEditor::run()
 {
     ImGui::DockSpaceOverViewport();
-    ImGui::SetNextItemAllowOverlap();
     ViewTitlePanel();
+    OpenpanelBar();
     AssetManager();
     OverviewPanel();
     OpenpanelBar();
