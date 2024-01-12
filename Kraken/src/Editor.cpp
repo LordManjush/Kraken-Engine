@@ -217,13 +217,14 @@ void Kraken::KrakenEditor::run()
 {
     
     ImGui::DockSpaceOverViewport();
+    TitleBar();
     HomeTitlePanel();
     ViewTitlePanel();
     OpenpanelBar();
     AssetManager();
     OverviewPanel();
     OpenpanelBar();
-    TitleBar();
+    
     
     
   // ImGui::ShowDemoWindow();
