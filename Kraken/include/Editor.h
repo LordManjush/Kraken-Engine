@@ -7,6 +7,9 @@ namespace Kraken {
 		void OverviewPanel();
 		void AssetManager();
 		void ViewTitlePanel();
+		void HomeTitlePanel();
+		//void ModelTitlePanel();
+		// void EditTitlepanel();
 		//Make new functions like the two above for each type of window
 		void run();
 	};
