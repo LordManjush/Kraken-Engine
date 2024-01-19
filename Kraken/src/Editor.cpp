@@ -18,33 +18,40 @@ using namespace std;
 auto defwidth = 1920;
 auto defheight = 1080;
 
+bool ShowOverViewWindow = true;
 bool ShowassetmanagerWindow = false;
 bool ShowViewPanel = false;
 bool ShowHomePanel = false;
+bool ShowModelPanel = false;
+bool ShowEditPanel = false;
+
 
 
 void Kraken::KrakenEditor::OverviewPanel()
 {
-
-    ImGui::Begin("Overview", NULL, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize);
-    ImGui::Dummy(ImVec2(9999.0f, 0.0f));
-    ImGui::BeginTabBar("hh");
-    
-    if (ImGui::BeginTabItem("Scene"))
+    if (ShowOverViewWindow)
     {
-        ImGui::Text("Jake");
-        
-        ImGui::EndTabItem();
-    }
+        ImGui::Begin("Overview", NULL, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize);
+        ImGui::Dummy(ImVec2(9999.0f, 0.0f));
+        ImGui::BeginTabBar("hh");
 
-    if (ImGui::BeginTabItem("Properties"))
-    {
-        ImGui::Text("god is great");
-        ImGui::EndTabItem();
-    }
+        if (ImGui::BeginTabItem("Scene"))
+        {
+            ImGui::Text("Jake");
 
-    ImGui::EndTabItem();
-    ImGui::End();
+            ImGui::EndTabItem();
+        }
+
+        if (ImGui::BeginTabItem("Properties"))
+        {
+            ImGui::Text("god is great");
+            ImGui::EndTabItem();
+        }
+
+        ImGui::EndTabItem();
+        ImGui::End();
+    }
+   
 
 }
 
@@ -65,13 +72,19 @@ void Kraken::KrakenEditor::ViewTitlePanel()
 {
  
     if (ShowViewPanel) {
+       
         ImGui::SetNextWindowPos(ImVec2(defwidth * 0.0f, defheight * 0.017f));
         ImGui::SetNextWindowSize(ImVec2(defwidth * 1.0f, defheight * 0.06f));
-
+        
        
 
         ImGui::Begin("ViewPanel",NULL,ImGuiWindowFlags_NoCollapse|ImGuiWindowFlags_NoDocking|ImGuiWindowFlags_NoResize|ImGuiWindowFlags_NoTitleBar);
+        
+        ImGui::Dummy(ImVec2(0.1, 1));
+        if (ImGui::Checkbox(ICON_FA_LIST, &ShowOverViewWindow))
+        {
 
+        }
         ImGui::End();
 
 
@@ -89,14 +102,79 @@ void Kraken::KrakenEditor::HomeTitlePanel()
 {
 
     if (ShowHomePanel) {
-
-        ShowViewPanel = false;
+       
         ImGui::SetNextWindowPos(ImVec2(defwidth * 0.0f, defheight * 0.017f));
         ImGui::SetNextWindowSize(ImVec2(defwidth * 1.0f, defheight * 0.06f));
 
 
 
         ImGui::Begin("HomeTitlePanel", NULL, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar);
+        ImGui::BeginTable("ClipBoard", 1);
+        ImGui::Dummy((ImVec2(0.0f, 2.0f)));
+        if (ImGui::Button(ICON_FA_PASTE, ImVec2(40, 40)))
+        {
+
+        }
+        
+        ImGui::SameLine((0.0f),   (-6.0f));
+        if (ImGui::Button(ICON_FA_COPY, ImVec2(40, 40)))
+        {
+
+        }
+        ImGui::SameLine((0.0f), (-6.0f));
+        if (ImGui::Button(ICON_FA_SCISSORS, ImVec2(40, 40)))
+        {
+
+        }
+        ImGui::SameLine((0.0f), (-6.0f));
+        if (ImGui::Button(ICON_FA_CLONE, ImVec2(40, 40)))
+        {
+
+        }
+       
+        ImGui::EndTable();
+        ImGui::SameLine((0.0f), (-6.0f));
+        
+        if (ImGui::Button(ICON_FA_ARROWS_UP_DOWN_LEFT_RIGHT, ImVec2(40, 40)))
+        {
+
+        }
+        ImGui::SameLine((0.0f), (-6.0f));
+
+        if (ImGui::Button(ICON_FA_EXPAND, ImVec2(40, 40)))
+        {
+
+        }
+        ImGui::SameLine((0.0f), (-6.0f));
+
+        if (ImGui::Button(ICON_FA_ARROWS_ROTATE, ImVec2(40, 40)))
+        {
+
+        }
+        ImGui::End();
+
+
+
+    }
+
+
+
+
+
+}
+
+
+void Kraken::KrakenEditor::ModelTitlePanel()
+{
+
+    if (ShowModelPanel) {
+       
+        ImGui::SetNextWindowPos(ImVec2(defwidth * 0.0f, defheight * 0.017f));
+        ImGui::SetNextWindowSize(ImVec2(defwidth * 1.0f, defheight * 0.06f));
+
+
+
+        ImGui::Begin("ModelPanel", NULL, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar);
 
         ImGui::End();
 
@@ -109,6 +187,34 @@ void Kraken::KrakenEditor::HomeTitlePanel()
 
 
 }
+
+
+void Kraken::KrakenEditor::EditTitlePanel()
+{
+
+    if (ShowEditPanel) {
+        
+        ImGui::SetNextWindowPos(ImVec2(defwidth * 0.0f, defheight * 0.017f));
+        ImGui::SetNextWindowSize(ImVec2(defwidth * 1.0f, defheight * 0.06f));
+
+
+
+        ImGui::Begin("EditPanel", NULL, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar);
+
+        ImGui::End();
+
+
+
+    }
+
+
+
+
+
+}
+
+
+
 void Kraken::KrakenEditor::OpenpanelBar()// this will open the asset manager and also hide it (just like ue5 content drawer)
 {
 
@@ -185,7 +291,11 @@ void Kraken::KrakenEditor::TitleBar()
         ImGui::Dummy(ImVec2(40.0f, 0.0f));
         if (ImGui::BeginMenu("View")) {
             if (ImGui::MenuItem("Open View panel"))
+         
                 ShowViewPanel = !ShowViewPanel;
+            ShowModelPanel = false;
+            ShowHomePanel = false;
+            ShowEditPanel = false;
                 
             
             ImGui::EndMenu();
@@ -195,17 +305,35 @@ void Kraken::KrakenEditor::TitleBar()
         if (ImGui::BeginMenu("Home"))
         {
             if (ImGui::MenuItem("Open Home panel"))
+                
                 ShowHomePanel = !ShowHomePanel;
+            ShowModelPanel = false;
+            ShowViewPanel = false;
+            ShowEditPanel = false;
+            ImGui::EndMenu();
         }
         ImGui::Dummy(ImVec2(40.0f, 0.0f));
         if (ImGui::BeginMenu("Model"))
         {
-           
+            if (ImGui::MenuItem("Open Model panel"))
+            
+                ShowModelPanel = !ShowModelPanel;
+                ShowHomePanel = false;
+                ShowViewPanel = false;
+                ShowEditPanel = false;
+            ImGui::EndMenu();
         }
         ImGui::Dummy(ImVec2(40.0f, 0.0f));
         if (ImGui::BeginMenu("Edit"))
         {
+            if (ImGui::MenuItem("Open Edit panel"))
 
+                ShowEditPanel = !ShowEditPanel;
+            ShowHomePanel = false;
+            ShowViewPanel = false;
+            ShowModelPanel = false;
+
+            ImGui::EndMenu();
         }
 
         ImGui::EndMainMenuBar();
@@ -218,16 +346,18 @@ void Kraken::KrakenEditor::run()
     
     ImGui::DockSpaceOverViewport();
     TitleBar();
+    EditTitlePanel();
+    ModelTitlePanel();
     HomeTitlePanel();
     ViewTitlePanel();
-    OpenpanelBar();
+    
     AssetManager();
     OverviewPanel();
     OpenpanelBar();
     
     
     
-  // ImGui::ShowDemoWindow();
+   ImGui::ShowDemoWindow();
     
     //Add the functions here
 }
