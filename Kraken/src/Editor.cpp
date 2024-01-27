@@ -1,5 +1,8 @@
+
+
 #include "Editor.h"
 #include <imgui/imgui.h>
+
 #include <imgui/imgui_stdlib.h>
 #include <imgui/ImGuiFileDialog.h>
 #include <filesystem>
@@ -17,6 +20,7 @@ using namespace std;
 
 auto defwidth = 1920;
 auto defheight = 1080;
+int row;
 
 bool ShowOverViewWindow = true;
 bool ShowassetmanagerWindow = false;
@@ -109,48 +113,64 @@ void Kraken::KrakenEditor::HomeTitlePanel()
 
 
         ImGui::Begin("HomeTitlePanel", NULL, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar);
-        ImGui::BeginTable("ClipBoard", 1);
-        ImGui::Dummy((ImVec2(0.0f, 2.0f)));
-        if (ImGui::Button(ICON_FA_PASTE, ImVec2(40, 40)))
-        {
-
-        }
         
-        ImGui::SameLine((0.0f),   (-6.0f));
-        if (ImGui::Button(ICON_FA_COPY, ImVec2(40, 40)))
         {
+           
+            
+           
+            
+            ImGui::BeginChild("ClipBoard",ImVec2(180.0f,45.0f),true);
+            if (ImGui::Button(ICON_FA_PASTE, ImVec2(40, 40)))
+            {
 
+            }
+
+            ImGui::SameLine(0.0f,-2.0f);
+            if (ImGui::Button(ICON_FA_COPY, ImVec2(40, 40)))
+            {
+
+            }
+            ImGui::SameLine(0.0f, -2.0f);
+            if (ImGui::Button(ICON_FA_SCISSORS, ImVec2(40, 40)))
+            {
+
+            }
+            ImGui::SameLine(0.0f, -2.0f);
+            if (ImGui::Button(ICON_FA_CLONE, ImVec2(40, 40)))
+            {
+
+            }
+           
+            ImGui::EndChild();
+
+           
+           ImGui::SameLine(-0.0f, -10.0f);
+           
+           ImGui::BeginChild("Tools", ImVec2(180.0f, 45.0f), true, ImGuiWindowFlags_NoScrollbar);
+            if (ImGui::Button(ICON_FA_ARROW_POINTER, ImVec2(40, 40)))
+            {
+
+            }
+            ImGui::SameLine(0.0f, -2.0f);
+            if (ImGui::Button(ICON_FA_ARROWS_UP_DOWN_LEFT_RIGHT, ImVec2(40, 40)))
+            {
+
+            }
+            ImGui::SameLine(0.0f, -2.0f);
+            if (ImGui::Button(ICON_FA_EXPAND, ImVec2(40, 40)))
+            {
+
+            }
+            ImGui::SameLine(0.0f, -2.0f);
+            if (ImGui::Button(ICON_FA_ARROWS_ROTATE, ImVec2(40, 40)))
+            {
+
+            }
+            ImGui::EndChild();
         }
-        ImGui::SameLine((0.0f), (-6.0f));
-        if (ImGui::Button(ICON_FA_SCISSORS, ImVec2(40, 40)))
-        {
-
-        }
-        ImGui::SameLine((0.0f), (-6.0f));
-        if (ImGui::Button(ICON_FA_CLONE, ImVec2(40, 40)))
-        {
-
-        }
-       
-        ImGui::EndTable();
-        ImGui::SameLine((0.0f), (-6.0f));
-        
-        if (ImGui::Button(ICON_FA_ARROWS_UP_DOWN_LEFT_RIGHT, ImVec2(40, 40)))
-        {
-
-        }
-        ImGui::SameLine((0.0f), (-6.0f));
-
-        if (ImGui::Button(ICON_FA_EXPAND, ImVec2(40, 40)))
-        {
-
-        }
-        ImGui::SameLine((0.0f), (-6.0f));
-
-        if (ImGui::Button(ICON_FA_ARROWS_ROTATE, ImVec2(40, 40)))
-        {
-
-        }
+        ImGui::SeparatorText("ClipBoard");
+        ImGui::SameLine (299.0f, -6.0f);
+        ImGui::SeparatorText("Tools");
         ImGui::End();
 
 
@@ -357,7 +377,7 @@ void Kraken::KrakenEditor::run()
     
     
     
-   ImGui::ShowDemoWindow();
+   //ImGui::ShowDemoWindow();
     
     //Add the functions here
 }
