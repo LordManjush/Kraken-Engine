@@ -12,5 +12,6 @@ namespace Kraken {
 		void EditTitlePanel();
 		//Make new functions like the two above for each type of window
 		void run();
+		
 	};
 }
