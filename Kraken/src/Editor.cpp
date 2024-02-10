@@ -106,7 +106,7 @@ void Kraken::KrakenEditor::HomeTitlePanel()
 {
 
     if (ShowHomePanel) {
-       
+        
         ImGui::SetNextWindowPos(ImVec2(defwidth * 0.0f, defheight * 0.017f));
         ImGui::SetNextWindowSize(ImVec2(defwidth * 1.0f, defheight * 0.06f));
 
@@ -115,17 +115,17 @@ void Kraken::KrakenEditor::HomeTitlePanel()
         ImGui::Begin("HomeTitlePanel", NULL, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar);
         
         {
+
            
-            
-           
-            
-            ImGui::BeginChild("ClipBoard",ImVec2(180.0f,45.0f),true);
+
+
+            ImGui::BeginChild("ClipBoard", ImVec2(180.0f, 55.0f), true);
             if (ImGui::Button(ICON_FA_PASTE, ImVec2(40, 40)))
             {
 
             }
 
-            ImGui::SameLine(0.0f,-2.0f);
+            ImGui::SameLine(0.0f, -2.0f);
             if (ImGui::Button(ICON_FA_COPY, ImVec2(40, 40)))
             {
 
@@ -140,13 +140,13 @@ void Kraken::KrakenEditor::HomeTitlePanel()
             {
 
             }
-           
+
             ImGui::EndChild();
 
-           
-           ImGui::SameLine(-0.0f, -10.0f);
-           
-           ImGui::BeginChild("Tools", ImVec2(180.0f, 45.0f), true, ImGuiWindowFlags_NoScrollbar);
+
+            ImGui::SameLine(-0.0f, -10.0f);
+
+            ImGui::BeginChild("Tools", ImVec2(180.0f, 55.0f), true, ImGuiWindowFlags_NoScrollbar);
             if (ImGui::Button(ICON_FA_ARROW_POINTER, ImVec2(40, 40)))
             {
 
@@ -167,10 +167,38 @@ void Kraken::KrakenEditor::HomeTitlePanel()
 
             }
             ImGui::EndChild();
+
+            ImGui::SameLine(0.0f, -99.0f);
+            ImGui::BeginChild("Insert", ImVec2(118.0f, 55.0f), true, ImGuiWindowFlags_NoScrollbar);
+            if (ImGui::Button(ICON_FA_CUBE, ImVec2(35, 30)))
+            {
+
+                //ImGui::OpenPopup("Parts");
+            }
+
+            ImGui::SameLine(0.0f, 9.0f);
+            if (ImGui::CollapsingHeader("Parts"))
+            {
+
+            }
+           /// if (ImGui::BeginPopupModal("Parts",NULL,ImGuiWindowFlags_NoCollapse)) {
+              //  ImGui::Selectable("Part",ImGuiSelectableFlags_DontClosePopups);
+              //  ImGui::Selectable("Cylinder", ImGuiSelectableFlags_DontClosePopups);
+               // ImGui::Selectable("Sphere", ImGuiSelectableFlags_DontClosePopups);
+               // ImGui::Selectable("Capsule", ImGuiSelectableFlags_DontClosePopups);
+              ///  ImGui::EndPopup();
+           /// }
+
+            
+            ImGui::EndChild();
+
+
         }
         ImGui::SeparatorText("ClipBoard");
-        ImGui::SameLine (299.0f, -6.0f);
+        ImGui::SameLine (0.0f, 160.0f);
         ImGui::SeparatorText("Tools");
+        ImGui::SameLine(0.0f, 145.0f);
+        ImGui::SeparatorText("Insert");
         ImGui::End();
 
 
@@ -247,7 +275,7 @@ void Kraken::KrakenEditor::OpenpanelBar()// this will open the asset manager and
  
    
     ImGui::Begin("jake", NULL,  ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove|ImGuiWindowFlags_NoTitleBar);
-    ImGui::Dummy(ImVec2(0.0f, 5.0f));
+    ImGui::Dummy(ImVec2(0.0f, -2.0f));
     if (ImGui::Button(ICON_FA_FOLDER))
     {
         ShowassetmanagerWindow = !ShowassetmanagerWindow; // Toggle the value
@@ -377,7 +405,7 @@ void Kraken::KrakenEditor::run()
     
     
     
-   //ImGui::ShowDemoWindow();
+   ImGui::ShowDemoWindow();
     
     //Add the functions here
 }
