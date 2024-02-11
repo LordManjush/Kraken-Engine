@@ -10,8 +10,9 @@
 #include <imgui\imgui_impl_glfw.h>
 #include <imgui\imgui_impl_opengl3.h>
 #define STB_IMAGE_IMPLEMENTATION
-#include <imgui\stb_image.h>
+#include <EditorUi\stb_image.h>
 #include <imgui\IconsFontAwesome6.h>
+#include<glad/glad.h>
 #include <include/GLFW/glfw3.h>
 #include <include\GLFW\glfw3native.h>
 #include <imgui/tweeny-3.2.0.h>
@@ -392,20 +393,20 @@ void Kraken::KrakenEditor::TitleBar()
 void Kraken::KrakenEditor::run()
 {
     
-    ImGui::DockSpaceOverViewport();
-    TitleBar();
-    EditTitlePanel();
-    ModelTitlePanel();
-    HomeTitlePanel();
-    ViewTitlePanel();
+    //ImGui::DockSpaceOverViewport();
+   // TitleBar();
+    //EditTitlePanel();
+   // ModelTitlePanel();
+    //HomeTitlePanel();
+   // ViewTitlePanel();
     
-    AssetManager();
-    OverviewPanel();
-    OpenpanelBar();
+    //AssetManager();
+    //OverviewPanel();
+    //OpenpanelBar()
     
     
     
-   ImGui::ShowDemoWindow();
+   //ImGui::ShowDemoWindow();
     
     //Add the functions here
 }

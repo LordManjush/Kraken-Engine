@@ -15,6 +15,7 @@ namespace Kraken {
 
 	struct ProjectManager
 	{
+		void LoadIconImage();
 		void AboutPanel();
 		void OpenProjectsPanel();
 		void NewProjectPanel();

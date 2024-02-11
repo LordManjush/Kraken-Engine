@@ -22,7 +22,7 @@ int main()
 		//ImGui::PushFont(fancyFont);
 		kraken.clear();
 
-		//projectManager.run(window);
+		projectManager.run(window);
 		editor.run();
 
 		kraken.windowEventHandle(*window);
