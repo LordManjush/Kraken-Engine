@@ -1,6 +1,8 @@
+#pragma once
 #include "ProjectManager.h"
 #define IMGUI_DEFINE_MATH_OPERATORS
 #include <imgui/imgui_internal.h>
+
 #define STB_IMAGE_IMPLEMENTATION
 
 #include <imgui/imgui_stdlib.h>
@@ -15,6 +17,7 @@
 #include <include/GLFW/glfw3.h>
 #include <include\GLFW\glfw3native.h>
 #include <limo.h>
+
 int width, height, nrComponents;
 unsigned int IconId;
 
@@ -55,10 +58,10 @@ Kraken::Panels currentPanel = Kraken::Panels::About;
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
         stbi_image_free(data);
-        Limo::InfoLog("[Launcher] Sucsessfully loaded Launcher Icon  ");
+        
     }
     else {
-        Limo::ErrorLog("cannot load icon image");
+        
 
         stbi_image_free(data);
     }

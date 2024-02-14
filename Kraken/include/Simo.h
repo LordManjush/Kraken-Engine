@@ -1,6 +1,5 @@
-#pragma once
-#ifndef LIMO_H
-#define LIMO_H
+#ifndef SIMO_H
+#define SIMO_H
 
 #include <string>
 #include <iostream>
@@ -77,7 +76,7 @@ public:
 };
 
 #pragma endregion
-namespace Limo
+namespace Simo
 {
     const std::string currentDateTime() {
         struct tm newtime;

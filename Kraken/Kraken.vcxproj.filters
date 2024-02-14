@@ -66,12 +66,6 @@
     <ClInclude Include="include\Editor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Libraries\Imgui\IconsFontAwesome5.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\Imgui\stb_image.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Libraries\Imgui\IconsFontAwesome6.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -1299,6 +1293,9 @@
     <ClInclude Include="Libraries\include\SFML\Window.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Libraries\EditorUi\stb_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Libraries\imgui\imgui.cpp">
@@ -1380,6 +1377,8 @@
   <ItemGroup>
     <Font Include="Data\Fonts\Kanit-SemiBold.ttf" />
     <Font Include="Data\Fonts\Forkawesome-webfont.ttf" />
+    <Font Include="Data\Fonts\NotoSans-Regular.ttf" />
+    <Font Include="Data\Fonts\RabbidHighwaySignII.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="imgui.ini" />
@@ -1830,5 +1829,27 @@
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libraries\lib\glfw3.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Data\Logo\Logo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="x64\Release\Editor.obj" />
+    <Object Include="x64\Release\glad.obj" />
+    <Object Include="x64\Release\glm.obj" />
+    <Object Include="x64\Release\imgui.obj" />
+    <Object Include="x64\Release\imgui_demo.obj" />
+    <Object Include="x64\Release\imgui_draw.obj" />
+    <Object Include="x64\Release\imgui_impl_glfw.obj" />
+    <Object Include="x64\Release\imgui_impl_opengl3.obj" />
+    <Object Include="x64\Release\imgui_stdlib.obj" />
+    <Object Include="x64\Release\imgui_tables.obj" />
+    <Object Include="x64\Release\imgui_widgets.obj" />
+    <Object Include="x64\Release\ImGuiFileDialog.obj" />
+    <Object Include="x64\Release\Kraken.obj" />
+    <Object Include="x64\Release\main.obj" />
+    <Object Include="x64\Release\ProjectManager.obj" />
   </ItemGroup>
 </Project>
