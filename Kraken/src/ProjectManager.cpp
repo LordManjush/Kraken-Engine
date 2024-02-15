@@ -16,7 +16,6 @@
 #include<glad/glad.h>
 #include <include/GLFW/glfw3.h>
 #include <include\GLFW\glfw3native.h>
-#include <limo.h>
 
 int width, height, nrComponents;
 unsigned int IconId;
