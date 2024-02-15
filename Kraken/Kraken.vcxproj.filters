@@ -54,9 +54,6 @@
     <ClInclude Include="Libraries\imgui\imstb_truetype.h">
       <Filter>Resource Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\limo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\ProjectManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -70,9 +67,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Libraries\imgui\dirent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\imgui\IconsFontAwesome5.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Libraries\imgui\IconsFontAwesome6.h">
@@ -112,9 +106,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Libraries\imgui\imstb_truetype.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\imgui\stb_image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Libraries\imgui\tweeny-3.2.0.h">

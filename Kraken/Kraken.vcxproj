@@ -153,7 +153,6 @@
   <ItemGroup>
     <ClInclude Include="include\Editor.h" />
     <ClInclude Include="include\Kraken.h" />
-    <ClInclude Include="include\limo.h" />
     <ClInclude Include="include\ProjectManager.h" />
     <ClInclude Include="Libraries\imgui\dirent.h" />
     <ClInclude Include="Libraries\imgui\IconsFontAwesome6.h" />
