@@ -3,7 +3,6 @@
 #define IMGUI_DEFINE_MATH_OPERATORS
 #include <imgui/imgui_internal.h>
 
-#define STB_IMAGE_IMPLEMENTATION
 
 #include <imgui/imgui_stdlib.h>
 #include <imgui/ImGuiFileDialog.h>
