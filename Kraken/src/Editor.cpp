@@ -9,8 +9,7 @@
 #include <iostream>
 #include <imgui\imgui_impl_glfw.h>
 #include <imgui\imgui_impl_opengl3.h>
-#define STB_IMAGE_IMPLEMENTATION
-#include <EditorUi\stb_image.h>
+
 #include <imgui\IconsFontAwesome6.h>
 #include<glad/glad.h>
 #include <include/GLFW/glfw3.h>
