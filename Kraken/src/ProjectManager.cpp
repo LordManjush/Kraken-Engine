@@ -10,11 +10,13 @@
 #include <iostream>
 #include <imgui\imgui_impl_glfw.h>
 #include <imgui\imgui_impl_opengl3.h>
-#include <EditorUi\stb_image.h>
 #include <imgui\IconsFontAwesome6.h>
 #include<glad/glad.h>
 #include <include/GLFW/glfw3.h>
 #include <include\GLFW\glfw3native.h>
+
+#define STB_IMAGE_IMPLEMENTATION
+#include<stb/stb_image.h>
 
 int width, height, nrComponents;
 unsigned int IconId;
