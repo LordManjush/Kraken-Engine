@@ -1,4 +1,6 @@
+#include <iostream>
 
+using namespace std;
 #include "ProjectManager.h"
 #define IMGUI_DEFINE_MATH_OPERATORS
 #include <imgui/imgui_internal.h>
@@ -16,30 +18,37 @@
 #include <include\GLFW\glfw3native.h>
 
 #define STB_IMAGE_IMPLEMENTATION
-#include<stb/stb_image.h>
+#include<EditorUi/stb_image.h>
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include <EditorUi/stb_image_write.h>
 
 int width, height, nrComponents;
 unsigned int IconId;
 
 namespace fs = std::filesystem;
 
+
 std::string ProjectName = "NewProject";
 std::string ProjectPath = "Documents/KrakenProjects/";
 
 Kraken::Panels currentPanel = Kraken::Panels::About;
 
+unsigned int rawTexture;
+
+std::filesystem::path filepath = std::string(".//Data/Logo/Logo.png");
+bool filepathExists = std::filesystem::is_directory(filepath.parent_path());
 
 
+void Kraken::ProjectManager::LoadIconImage() {
 
- void Kraken::ProjectManager::LoadIconImage() {
-
-
-   
+    std::cout << filepathExists;
+    int width, height, nrComponents;
     
-    stbi_set_flip_vertically_on_load(true);
-    unsigned char* data = stbi_load(".\\Data\\Logo\\Logo.png", &width, &height, &nrComponents, 0);
+    stbi_set_flip_vertically_on_load(false);
+    unsigned char* data = stbi_load(".//Data/Logo/Logo.png" , &width, &height, &nrComponents, 0);
+    
     if (data) {
-        GLenum format{};
+        GLenum format;
         if (nrComponents == 1)
             format = GL_RED;
         else if (nrComponents == 3)
@@ -47,8 +56,8 @@ Kraken::Panels currentPanel = Kraken::Panels::About;
         else if (nrComponents == 4)
             format = GL_RGBA;
 
-        glGenTextures(1, &IconId);
-        glBindTexture(GL_TEXTURE_2D, IconId);
+        glGenTextures(1, &rawTexture);
+        glBindTexture(GL_TEXTURE_2D, rawTexture);
         glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);
 
@@ -58,14 +67,22 @@ Kraken::Panels currentPanel = Kraken::Panels::About;
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
         stbi_image_free(data);
-        
+       
     }
     else {
         
+        std::cout << "Image failed";
 
         stbi_image_free(data);
     }
 }
+
+
+
+    
+
+
+
 
 static void ChoosePath()
 {
@@ -83,6 +100,7 @@ static void CreateProject()
     fs::create_directory(ProjectPath + "/" + ProjectName);
     ProjectName = "New Project";
 }
+
 void Kraken::ProjectManager::AboutPanel()
 {
     ImGui::Text("About");
@@ -140,36 +158,40 @@ void Kraken::ProjectManager::run(GLFWwindow* window)
     ImGui::Begin("",NULL,ImGuiWindowFlags_NoCollapse|ImGuiWindowFlags_NoMove|ImGuiWindowFlags_NoResize|ImGuiWindowFlags_NoTitleBar|ImGuiWindowFlags_DockNodeHost);
     
     ChoosePath();
-    ImGui::Image(reinterpret_cast<void*>(static_cast<intptr_t>(IconId)), ImVec2(width, height));
-    ImGui::Dummy(ImVec2(0.0f, 0.07f));
+   
+    ImGui::Image((void*)(intptr_t)rawTexture, ImVec2(128, 128));
+    ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 5.0f);
     if (ImGui::Selectable("New Project",false,0))
     {
         currentPanel = New;
     }
-    ImGui::Separator();
+ 
     if (ImGui::Selectable("Open Project",false, 0))
     {
         currentPanel = Open;
     }
-    ImGui::Separator();
+   
     if (ImGui::Selectable("Learn"))
     {
         currentPanel = Learn;
     }
-    ImGui::Separator();
+    
     if (ImGui::Selectable("About"))
     {
         currentPanel = About;
     }
-    ImGui::Dummy(ImVec2(0.0f, 749.0f));
+
+    ImGui::Dummy(ImVec2(0.0f, 730.0f));
     ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 5.0f);
     if(ImGui::Button(ICON_FA_GEAR, ImVec2(45.0f, 45.0f)));
     {
 
     }
+    ImGui::SameLine(0.0, 0.0);
+    ImGui::BulletText("Version 0.01");
     ImGui::PopStyleVar();
-    //ImGui::Dummy(ImVec2(0.0f, 580.0f));
-    //ImGui::BulletText("Version 0.01");
+    
+    
     
     
     
@@ -185,3 +207,7 @@ void Kraken::ProjectManager::run(GLFWwindow* window)
     ImGui::Begin("Project list", NULL, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize );
     ImGui::End();
 }
+
+
+
+

@@ -429,6 +429,9 @@
     <ClInclude Include="include\limo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Libraries\EditorUi\stb_image_write.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Libraries\imgui\imgui.cpp">
@@ -548,7 +551,6 @@
   <ItemGroup>
     <Object Include="x64\Release\Editor.obj" />
     <Object Include="x64\Release\glad.obj" />
-    <Object Include="x64\Release\glm.obj" />
     <Object Include="x64\Release\imgui.obj" />
     <Object Include="x64\Release\imgui_demo.obj" />
     <Object Include="x64\Release\imgui_draw.obj" />

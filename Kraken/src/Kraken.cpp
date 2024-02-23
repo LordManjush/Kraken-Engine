@@ -156,7 +156,7 @@ void Kraken::Kraken::InitalizeImGui(GLFWwindow& window)
 	
 
 	static const ImWchar icon_ranges[] = { ICON_MIN_FA, ICON_MAX_FA, 0 };
-
+ 
 
 
 

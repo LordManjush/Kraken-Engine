@@ -155,6 +155,7 @@
     <ClInclude Include="include\Kraken.h" />
     <ClInclude Include="include\limo.h" />
     <ClInclude Include="include\ProjectManager.h" />
+    <ClInclude Include="Libraries\EditorUi\stb_image_write.h" />
     <ClInclude Include="Libraries\imgui\dirent.h" />
     <ClInclude Include="Libraries\imgui\IconsFontAwesome6.h" />
     <ClInclude Include="Libraries\imgui\imconfig.h" />
@@ -319,7 +320,6 @@
   <ItemGroup>
     <Object Include="x64\Release\Editor.obj" />
     <Object Include="x64\Release\glad.obj" />
-    <Object Include="x64\Release\glm.obj" />
     <Object Include="x64\Release\imgui.obj" />
     <Object Include="x64\Release\ImGuiFileDialog.obj" />
     <Object Include="x64\Release\imgui_demo.obj" />

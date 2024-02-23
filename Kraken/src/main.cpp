@@ -17,6 +17,7 @@ int main()
 
 	kraken.InitalizeImGui(*window);
 
+	projectManager.LoadIconImage();
 	while (!glfwWindowShouldClose(window))
 	{
 		//ImGui::PushFont(fancyFont);
